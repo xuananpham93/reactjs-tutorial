@@ -1,0 +1,130 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Header {
+  background: #1F568B;
+  height: 100px;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+}
+
+.Content {
+  flex: 3;
+  padding: 15px;
+  /* background-color: blue; */
+}
+
+.Sidebar {
+  flex: 1;
+  padding: 15px;
+  /* background-color: green; */
+}
+
+.Footer {
+  height: 100px;
+  background-color: pink;
+}
+
+#menu-header {
+  margin-top: 30px;
+}
+
+#menu-header ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+#menu-header ul li {
+  display: inline-block;
+}
+
+#menu-header ul a {
+  text-decoration: none;
+  color: #fff;
+  width: 100px;
+  float: left;
+  font-weight: bold;
+  text-align: center;
+  line-height: 35px;
+}
+
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.input-text {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-input-note {
+  margin-top: 38px;
+  padding-left: 40px;
+}
+
+.input-note {
+  width: 50%;
+}
+
+.btn-add-note {
+  max-width: 100px;
+  margin-left: 10px;
+}
+
+.item-note {
+  display: flex;
+  clear: both;
+  padding: 10px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.title-note {
+  flex: 1
+}
+
+.action-note a {
+  color: white;
+  padding: 6px 10px;
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.action-edit {
+  background-color: #337ab7;
+}
+
+.action-delete {
+  background-color: #d9534f;
+}
