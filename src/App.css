@@ -128,3 +128,12 @@ body {
 .action-delete {
   background-color: #d9534f;
 }
+
+.form-input-note-edit {
+  margin-top: 38px;
+  width: 500px;
+}
+
+.input-note-edit {
+  width: 78%;
+}
