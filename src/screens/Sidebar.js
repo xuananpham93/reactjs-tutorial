@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 
 class Sidebar extends Component {
     constructor(props) {
-        super(props);
+        super(props)
 
         this.state = {
-            isLogin: false,
             username: '',
-            password: ''
+            password: '',
+            isLogin: false
         }
     }
 
@@ -23,10 +23,11 @@ class Sidebar extends Component {
         });
     }
 
-    onLoginSubmit = () => {
+    onLoginClick = (e) => {
+        e.preventDefault();
+
         this.setState({
-            isLogin: true,
-            password: ''
+            isLogin: true
         });
     }
 
@@ -42,7 +43,7 @@ class Sidebar extends Component {
         if (this.state.isLogin) {
             return (
                 <div>
-                    <h4>Xin chào, {this.state.username}</h4>
+                    Xin chao, {this.state.username}
                     <button onClick={this.onLogoutClick}>Logout</button>
                 </div>
             );
@@ -52,12 +53,12 @@ class Sidebar extends Component {
             <div className="Sidebar">
                 <h2 className="text-center">Login</h2>
 
-                <form onSubmit={this.onLoginSubmit}>
+                <form onSubmit={this.onLoginClick}>
                     <label ><b>Username</b></label>
                     <input className="input-text" type="text" placeholder="Enter Username" name="uname" required onChange={this.onUsernameChange} value={this.state.username} />
 
                     <label><b>Password</b></label>
-                    <input className="input-text" type="password" placeholder="Enter Password" name="psw" required onChange={this.onPasswordChange} value={this.state.password} />
+                    <input className="input-text" type="password" placeholder="Enter Password" name="psw" required value={this.state.password} onChange={this.onPasswordChange} />
 
                     <button className="btn" type="submit">Login</button>
                 </form>
