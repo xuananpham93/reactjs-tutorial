@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import firebase from 'firebase';
 
 class Sidebar extends Component {
     constructor(props) {
@@ -26,9 +27,35 @@ class Sidebar extends Component {
     onLoginClick = (e) => {
         e.preventDefault();
 
-        this.setState({
-            isLogin: true
-        });
+        firebase.auth().signInWithEmailAndPassword(this.state.username, this.state.password)
+            .then((userInfo) => {
+                console.log(userInfo);
+                this.setState({
+                    isLogin: true
+                });
+                localStorage.setItem('username', userInfo.user.email);
+                localStorage.setItem('isLogin', true);
+
+                // setTimeout(() => {
+                //     localStorage.clear();
+                // }, 10000);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    componentDidMount() {
+        // console.log(localStorage.getItem('username'));
+        // console.log(localStorage.getItem('isLogin'));
+        let isLogin = localStorage.getItem('isLogin');
+
+        if (isLogin) {
+            this.setState({
+                isLogin: true,
+                username: localStorage.getItem('username')
+            });
+        }
     }
 
     onLogoutClick = () => {

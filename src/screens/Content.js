@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
+import { Link } from 'react-router-dom';
 
 class Content extends Component {
     constructor(props) {
@@ -102,9 +103,19 @@ class Content extends Component {
         });
     }
 
+    onClickAbout = (e) => {
+        e.preventDefault();
+        if (true) {
+            this.props.history.push('/about');
+        }
+    }
+
     render() {
         return (
             <div className="Content">
+                <Link to="/about">About</Link>
+                <a href="javascript:void:(0)" onClick={this.onClickAbout}>About 2</a>
+
                 <h2 className="text-center">Danh sách notes</h2>
 
                 <form onSubmit={this.onAddNoteSubmit} className="form-input-note">

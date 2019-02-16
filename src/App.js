@@ -1,29 +1,50 @@
 import './App.css';
 
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import firebase from 'firebase';
 import Header from './screens/Header';
 import Sidebar from './screens/Sidebar';
 import Content from './screens/Content';
 import Footer from './screens/Footer';
 import Content2 from './screens/Content2';
+import Home from './screens/Home';
+import About from './screens/About';
 
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
         };
+
+        var config = {
+            apiKey: "AIzaSyC_s1XF3Sm5zo4MLIyV09S0vZm7q_sCfSI",
+            authDomain: "reactjs-tutorial-acae7.firebaseapp.com",
+            databaseURL: "https://reactjs-tutorial-acae7.firebaseio.com",
+            projectId: "reactjs-tutorial-acae7",
+            storageBucket: "reactjs-tutorial-acae7.appspot.com",
+            messagingSenderId: "780631658754"
+        };
+        firebase.initializeApp(config);
     }
 
     render() {
         return (
-            <div className="container">
-                <Header />
-                <div className="main-content">
-                    <Sidebar />
-                    <Content />
+            <Router>
+                <div className="container">
+                    {/* <Router>
+                    <div>
+                        <Route path="/" exact component={Content} />
+                        <Route path="/about/:id" component={Sidebar} />
+                    </div>
+                </Router> */}
+
+                    <Header />
+                    <Route path="/" exact component={Home} />
+                    <Route path="/about" component={About} />
+                    <Footer />
                 </div>
-                <Footer />
-            </div>
+            </Router>
         );
     }
 }
