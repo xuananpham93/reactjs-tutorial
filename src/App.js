@@ -3,6 +3,7 @@ import './App.css';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import firebase from 'firebase';
+import { inject, observer } from 'mobx-react';
 import Header from './screens/Header';
 import Sidebar from './screens/Sidebar';
 import Content from './screens/Content';
@@ -10,7 +11,10 @@ import Footer from './screens/Footer';
 import Content2 from './screens/Content2';
 import Home from './screens/Home';
 import About from './screens/About';
+import { sayHello } from './screens/utils/helpers';
 
+@inject('NoteStore')
+@observer
 class App extends Component {
     constructor(props) {
         super(props);
@@ -28,7 +32,14 @@ class App extends Component {
         firebase.initializeApp(config);
     }
 
+    componentDidMount() {
+        this.props.NoteStore.getNote();
+    }
+
     render() {
+        // console.log(this.props.NoteStore.note);
+        // console.log(this.props.NoteStore.getNote());
+
         return (
             <Router>
                 <div className="container">
