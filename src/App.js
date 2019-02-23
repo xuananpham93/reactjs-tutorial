@@ -12,6 +12,7 @@ import Content2 from './screens/Content2';
 import Home from './screens/Home';
 import About from './screens/About';
 import { sayHello } from './screens/utils/helpers';
+import { call } from './helper/request'
 
 @inject('NoteStore')
 @observer
@@ -32,8 +33,11 @@ class App extends Component {
         firebase.initializeApp(config);
     }
 
-    componentDidMount() {
-        this.props.NoteStore.getNote();
+    componentDidMount = async () => {
+        // this.props.NoteStore.getNote();
+        let data = await call("api/music_albums", {})
+        console.log("getDataa", data)
+        this.props.NoteStore.setList(data)
     }
 
     render() {

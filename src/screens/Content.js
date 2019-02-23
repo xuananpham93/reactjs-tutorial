@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import Modal from 'react-responsive-modal';
 import { Link } from 'react-router-dom';
-
+import { inject, observer } from 'mobx-react';
+@inject("NoteStore")
+@observer
 class Content extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            listNotes: [
-                'Giang Cave',
-                'Len ke hoach'
-            ],
+            // listNotes: [
+            //     'Giang Cave',
+            //     'Len ke hoach'
+            // ],
             txtAddNote: '',
             open: false,
         }
@@ -88,11 +90,11 @@ class Content extends Component {
     };
 
     renderNotes = () => {
-        return this.state.listNotes.map((item, index) => {
+        return this.props.NoteStore.listNotes.map((item, index) => {
             return (
                 <li className="item-note" key={index}>
                     <div className="title-note">
-                        <span>{item}</span>
+                        <span>{item.title}</span>
                     </div>
                     <div className="action-note">
                         <a href="javascript:void(0)" className="action-edit" onClick={() => this.onEditNoteClick(item, index)}>Sửa</a>
